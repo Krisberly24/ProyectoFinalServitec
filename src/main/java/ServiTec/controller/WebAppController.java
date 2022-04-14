@@ -18,6 +18,11 @@ public class WebAppController {
 	public String irContratos() {
 		return("contrato");
 	}
+	
+	@RequestMapping("/menuInicio_pag.html")
+	public String ir() {
+		return("menuInicio_pag.html");
+	}
 //	@RequestMapping("/empleados")
 //	public String irEmpl() {
 //		return("empleados");

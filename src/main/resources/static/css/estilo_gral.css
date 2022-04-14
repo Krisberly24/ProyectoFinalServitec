@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	background-color: beige;
+	background-color: white;
 	padding-bottom: 2em;
 }
 
@@ -11,7 +11,7 @@ hr {
 }
 		
 .jumbotron {
-	background-color: Teal;
+	background-color: black;
 	border-radius: 0.5em;
 	color: white;
 	padding: 1em;
@@ -20,16 +20,16 @@ hr {
 		
 th {
 	color: white;
-	background-color: grey;
+	background-color: #D28728 ;
 }
 
 tbody {
 	color: black;
-	background-color: beige;
+	background-color: #DEDEDE;
 }
 
 footer {
-  background-color: Teal;
+  background-color: black;
   border-radius: 0.5em;
   bottom: 0;
   color: white;

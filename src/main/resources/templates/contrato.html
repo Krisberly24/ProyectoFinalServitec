@@ -11,6 +11,7 @@
 		
 		<link href="/css/estilo_gral.css?version=1.01" rel="stylesheet" />
 		<link rel="shortcut icon" href="/images/favicon.png" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
  		
 		<title>Clientes</title>
 	</head>
@@ -46,29 +47,47 @@
 		<div class="container-fluid ml-1">
 		
 			<div class="jumbotron mt-2">
-				<h2>Contratos</h2>
+				<div class="row">
+					<div class="offset-2 col-8">
+						<h2>Contratos</h2>
+					</div>
+					<div class="col-2">
+						<a href="/menuInicio_pag.html">
+							<button class="btn btn-warning">Volver</button>
+						</a> 
+					</div>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-9">
+					<div class="form-inline">
+						<!-- Menú de modos: agregar (crear), modificar o eliminar. La consulta 
+							 y el listado están implícitas, ya que cualquiera de las opciones 
+							despliega el listado.			 -->
+			 			<label for="menuModos">Escoja un acci&oacute;n a realizar:&nbsp;</label>
+						<select class="form-control" id="menuModos" onchange="cambioModo()" style="width:150px">
+							 <option value="x" selected>&nbsp;</option>
+						    <option value="crear">Agregar</option>
+						    <option value="modificar">Modificar</option>
+						    <option value="eliminar">Eliminar</option>
+						</select>
+						<!-- Botón para crear nuevo registro -->
+						<button class="btn btn-warning" type="button" id="btnCrear" style="display:none" onclick="nuevoCliente()">
+							<i class="fa fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				
+				<div class="col-3">
+					<div id="buscador" class="form-inline">
+						<input class="form-control" type="number" id="txtBuscar" name="busquedacodigo" size="10" maxlength="4">
+			    		<button type="button" class="btn btn-warning" id="buscar" onClick="ajax_listar()">Buscar</button>
+		    		</div>
+	    		</div>
+	    	</div>
+    		
 			
-			<!-- Menú de modos: agregar (crear), modificar o eliminar. La consulta 
-				 y el listado están implícitas, ya que cualquiera de las opciones 
-				despliega el listado.			 -->
- 			<label for="menuModos">Escoja un acci&oacute;n a realizar:&nbsp;</label>
-			<select id="menuModos" onchange="cambioModo()" style="width:150px">
-				 <option value="x" selected>&nbsp;</option>
-			    <option value="crear">Agregar</option>
-			    <option value="modificar">Modificar</option>
-			    <option value="eliminar">Eliminar</option>
-			</select>
-			
-			<div id="buscador">
-				<input type="number" id="txtBuscar" name="busquedacodigo" size="10" maxlength="4">
-	    		<button type="button" class="" id="buscar" onClick="ajax_listar()">Buscar</button>
-    		</div>
-			<!-- Botón para crear nuevo registro -->
-			<button type="button" id="btnCrear" style="display:none" onclick="nuevoCliente()">
-				+
-			</button>
-			
+			<br/>
 			<!--	Tabla para mostrar el listado -->
 			<div class="table-responsive" id="tableDivContainer">
 				<table class="table table-condensed table-bordered" id="tablaDatos"	data-toggle="table">
@@ -119,16 +138,16 @@
 				
 								<label for="txtFInicio" class="label ml-2 mt-3">Fecha Inicio:</label>
 								<br>
-								<input class="input-sm ml-2" type="date" id="txtFInicio" maxlength="60" style="min-width:60%">
+								<input class="form-control" type="date" id="txtFInicio" maxlength="60" style="min-width:60%">
 			
 								<br>
 								<label for="txtFtermino" class="label ml-2 mt-3">Fecha termino</label>
 								<br>
-								<input class="input-sm ml-2" type="date" id="txtFtermino" maxlength="60" style="min-width:60%">
+								<input class="form-control" type="date" id="txtFtermino" maxlength="60" style="min-width:60%">
 								<br>
 								<label for="txtperiodo" class="label ml-2 mt-3">Periodicidad</label>
 								<br>
-								<input class="input-sm ml-2" type="text" id="txtperiodo" maxlength="60" style="min-width:60%">
+								<input class="form-control" type="text" id="txtperiodo" maxlength="60" style="min-width:60%">
 			
 								
 							</div>

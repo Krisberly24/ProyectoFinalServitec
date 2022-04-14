@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+	<head>
+		<meta charset="UTF-8">
+
+ 		<script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		
+		<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+		
+		<link href="/css/estilo_gral.css?version=1.01" rel="stylesheet" />
+ 		
+		<title>Clientes</title>
+	</head>
+	
+	<body>
+		<script src="/js/cliente.js?version=1.03" ></script>
+		
+		<script type="text/javascript">
+			// Global: la selección en la lista "#menuModos". 
+			//			  Guarda el objeto 'option' seleccionado en esa lista. 
+			var modoSelecc;
+		
+			function cambioModo() {
+				// Acciones a seguir cuando se escoge una opción el el menú de modos.
+				modoSelecc = $('#menuModos').children(':selected');
+				
+				if ( modoSelecc.val() == 'crear' )
+					$('#btnCrear').show();
+				else
+					$('#btnCrear').hide();
+
+				if ( modoSelecc.val() == 'x' )
+					$('#tablaDatos tbody').html('');
+				else				
+					ajax_listar();
+			}
+		
+			$(document).ready(function() {
+				
+			});
+		</script>
+	
+		<div class="container-fluid ml-1">
+			<div class="jumbotron mt-2">
+				<h2>Clientes</h2>
+			</div>
+		
+			<!-- Menú de modos: agregar (crear), modificar o eliminar. La consulta 
+				 y el listado están implícitas, ya que cualquiera de las opciones 
+				despliega el listado.			 -->
+ 			<label for="menuModos">Escoja un acci&oacute;n a realizar:&nbsp;</label>
+			<select id="menuModos" onchange="cambioModo()" style="width:150px">
+				 <option value="x" selected>&nbsp;</option>
+			    <option value="crear">Agregar</option>
+			    <option value="modificar">Modificar</option>
+			    <option value="eliminar">Eliminar</option>
+			</select>
+	
+			<!-- Botón para crear nuevo registro -->
+			<button type="button" id="btnCrear" style="display:none" onclick="nuevoCliente()">
+				+
+			</button>
+			
+			<!--	Tabla para mostrar el listado -->
+			<div class="table-responsive" id="tableDivContainer">
+				<table class="table table-condensed table-bordered" id="tablaDatos"	data-toggle="table">
+					<thead>
+						<tr>
+							<th>#ID</th>
+							<th>RUT</th>
+							<th>Nombre</th>
+							<th>Direcci&oacute;n</th>
+							<th>Tel&eacute;fono</th>
+							<th>Correo electr&oacute;nico</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+
+			<div class="modal" id="modalEdicion">
+				<div class="modal-dialog">
+					<div class="modal-content">
+		
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">
+								
+							</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+		
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="form-group" id="inputsModal">
+								<label class="label ml-2">ID:&nbsp;</label>
+								<label id="lblId" class="label ml-2" style="border:1;width:100px"></label>
+								
+								<br>
+								<label for="txtRut" class="label ml-2">RUT:</label>
+								<br>
+								<input class="input-sm ml-2" type="text" id="txtRut" style="min-width:15%;" maxlength="8">
+								
+								<br>
+								<label for="txtNombre" class="label ml-2 mt-3">Nombre:</label>
+								<br>
+								<input class="input-sm ml-2" type="text" id="txtNombre" maxlength="60" style="min-width:60%">
+			
+								<br>
+								<label for="txtDireccion" class="label ml-2 mt-3">Direcci&oacute;n:</label>
+								<br>
+								<input class="input-sm ml-2" type="text" id="txtDireccion" maxlength="60" style="min-width:60%">
+			
+								<br>
+								<label for="txtFono" class="label ml-2 mt-3">Tel&eacute;fono:</label>
+								<br>
+								<input class="input-sm ml-2" type="text" id="txtFono" maxlength="20" style="min-width:20%">
+			
+								<br>
+								<label for="txtEmail" class="label ml-2 mt-3">Correo electr&oacute;nico:</label>
+								<br>
+								<input class="input-sm ml-2" type="text" id="txtEmail" maxlength="50" style="min-width:50%">
+							</div>
+						</div>
+		
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<div class="btn-group">
+								<button type="button" id="btnOk" class="btn btn-success mx-1" onClick="accion()">
+									OK
+								</button>
+								<button type="button" id="btnCancelar" class="btn btn-danger mx-1" data-dismiss="modal">
+									Cerrar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+		</div>  
+
+		<footer th:replace="fragments/complementos :: pie_pagina"></footer>		
+	</body>
+</html>

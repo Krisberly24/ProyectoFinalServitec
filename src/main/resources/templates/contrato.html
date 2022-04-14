@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+	<head>
+		<meta charset="UTF-8">
+
+ 		<script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		
+		<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+		
+		<link href="/css/estilo_gral.css?version=1.01" rel="stylesheet" />
+		<link rel="shortcut icon" href="/images/favicon.png" />
+ 		
+		<title>Clientes</title>
+	</head>
+	
+	<body>
+		<script src="/js/contrato.js?version=1.03" ></script>
+		
+		<script type="text/javascript">
+			// Global: la selección en la lista "#menuModos". 
+			//			  Guarda el objeto 'option' seleccionado en esa lista. 
+			var modoSelecc;
+		
+			function cambioModo() {
+				// Acciones a seguir cuando se escoge una opción es el menú de modos.
+				modoSelecc = $('#menuModos').children(':selected');
+				
+				if ( modoSelecc.val() == 'crear' )
+					$('#btnCrear').show();
+				else
+					$('#btnCrear').hide();
+
+				if ( modoSelecc.val() == 'x' )
+					$('#tablaDatos tbody').html('');
+				else				
+					ajax_listar();
+			}
+		
+			$(document).ready(function() {
+				
+			});
+		</script>
+	
+		<div class="container-fluid ml-1">
+		
+			<div class="jumbotron mt-2">
+				<h2>Contratos</h2>
+			</div>
+			
+			<!-- Menú de modos: agregar (crear), modificar o eliminar. La consulta 
+				 y el listado están implícitas, ya que cualquiera de las opciones 
+				despliega el listado.			 -->
+ 			<label for="menuModos">Escoja un acci&oacute;n a realizar:&nbsp;</label>
+			<select id="menuModos" onchange="cambioModo()" style="width:150px">
+				 <option value="x" selected>&nbsp;</option>
+			    <option value="crear">Agregar</option>
+			    <option value="modificar">Modificar</option>
+			    <option value="eliminar">Eliminar</option>
+			</select>
+			
+			<div id="buscador">
+				<input type="number" id="txtBuscar" name="busquedacodigo" size="10" maxlength="4">
+	    		<button type="button" class="" id="buscar" onClick="ajax_listar()">Buscar</button>
+    		</div>
+			<!-- Botón para crear nuevo registro -->
+			<button type="button" id="btnCrear" style="display:none" onclick="nuevoCliente()">
+				+
+			</button>
+			
+			<!--	Tabla para mostrar el listado -->
+			<div class="table-responsive" id="tableDivContainer">
+				<table class="table table-condensed table-bordered" id="tablaDatos"	data-toggle="table">
+					<thead>
+						<tr>
+							<th>N° de contrato</th>
+							<th>Cliente</th>
+							<th>Fecha Inicio</th>
+							<th>Fecha de termino</th>
+							<th>Periocidad</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+
+			<div class="modal" id="modalEdicion">
+				<div class="modal-dialog">
+					<div class="modal-content">
+		
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">
+								
+							</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+		
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="form-group" id="inputsModal">
+								<div id="identificador">
+									<label class="label ml-2">ID:&nbsp;</label>
+									<label id="lblId" class="label ml-2" style="border:1;width:100px"></label>
+								</div>
+								<br>
+								<div id="selectName" class="form-group">
+								      <label for="sel1">Seleccione el cliente:</label>
+								      <select class="form-control" id="sel1">
+								        <option>seleccione</option>
+								      </select>
+							      </div>
+							    <div id="cliente">
+									 <label for="txtnombreC" class="label ml-2">Cliente:</label>
+									<br>
+									<input class="input-sm ml-2" type="text" id="txtnombreC" style="min-width:15%;" maxlength="8" disabled>
+								</div>
+				
+								<label for="txtFInicio" class="label ml-2 mt-3">Fecha Inicio:</label>
+								<br>
+								<input class="input-sm ml-2" type="date" id="txtFInicio" maxlength="60" style="min-width:60%">
+			
+								<br>
+								<label for="txtFtermino" class="label ml-2 mt-3">Fecha termino</label>
+								<br>
+								<input class="input-sm ml-2" type="date" id="txtFtermino" maxlength="60" style="min-width:60%">
+								<br>
+								<label for="txtperiodo" class="label ml-2 mt-3">Periodicidad</label>
+								<br>
+								<input class="input-sm ml-2" type="text" id="txtperiodo" maxlength="60" style="min-width:60%">
+			
+								
+							</div>
+						</div>
+		
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<div class="btn-group">
+								<button type="button" id="btnOk" class="btn btn-success mx-1" onClick="accion()">
+									OK
+								</button>
+								<button type="button" id="btnCancelar" class="btn btn-danger mx-1" data-dismiss="modal">
+									Cerrar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+		</div>  
+
+		<footer th:replace="fragments/complementos :: pie_pagina"></footer>		
+	</body>
+</html>

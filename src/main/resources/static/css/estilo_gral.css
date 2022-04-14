@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body {
+	background-color: beige;
+	padding-bottom: 2em;
+}
+
+hr {
+	border: 1px solid teal;
+	width: 100%;
+}
+		
+.jumbotron {
+	background-color: Teal;
+	border-radius: 0.5em;
+	color: white;
+	padding: 1em;
+	text-align: center;
+}
+		
+th {
+	color: white;
+	background-color: grey;
+}
+
+tbody {
+	color: black;
+	background-color: beige;
+}
+
+footer {
+  background-color: Teal;
+  border-radius: 0.5em;
+  bottom: 0;
+  color: white;
+  padding-top:0.3em;
+  padding-bottom:0.3em;
+  position: fixed;
+  text-align: center;
+  width: 99%;
+}
+#buscador{
+    float: right;
+     border-radius: 5px;
+}

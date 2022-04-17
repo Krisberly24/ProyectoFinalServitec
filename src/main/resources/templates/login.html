@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+	<link rel="stylesheet" href="/css/logn.css">
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<div class="container">
+	<div th:if="${param.error}" class="alert alert-danger mb-3">Credenciales Incorrectas</div>
+	    <div class="card card-login mx-auto text-center bg-dark">
+	        <div class="card-header mx-auto bg-dark">
+	            <span> <img src="/images/log/imgenLogin.png " width="20%" height="20%" class="" alt="Logo"> </span><br/>
+	                <span class="logo_title mt-5"> Lo mejor en servicio </span>
+	<!--            <h1>-->mensaje<!--</h1>-->
+	
+	        </div>
+	        <div class="card-body">
+	        <br>
+	            <form id="loginform" method="post" th:action="@{/auth/login-post}" >
+	                <div class="input-group form-group">
+	                    <div class="input-group-prepend">
+	                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+	                    </div>
+	                    <input type="text" name="username" class="form-control" placeholder="Username">
+	                </div>
+	
+	                <div class="input-group form-group">
+	                    <div class="input-group-prepend">
+	                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+	                    </div>
+	                    <input type="password" name="password" class="form-control" placeholder="Password">
+	                </div>
+	
+	                <div class="form-group">
+	                    <input type="submit" name="btn" value="Login" class="btn btn-outline-danger float-right login_btn">
+	                </div>
+	
+	            </form>
+	        </div>
+	    </div>
+	</div>
+
+</body>
+</html>

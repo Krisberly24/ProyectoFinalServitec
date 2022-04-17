@@ -23,6 +23,11 @@ public class WebAppController {
 	public String ir() {
 		return("menuInicio_pag.html");
 	}
+	
+	@RequestMapping("/login")
+	public String index() {
+		return("index");
+	}
 //	@RequestMapping("/empleados")
 //	public String irEmpl() {
 //		return("empleados");

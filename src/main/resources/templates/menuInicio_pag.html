@@ -1,37 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org">
-	<head>
-		<meta charset="UTF-8">
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="/css/toastr.min.css" rel="stylesheet" th:href="@{/css/toastr.min.css}" />
+  <script type="text/javascript" src="/js/toastr.min.js"></script>
+</head>
+<body>
 
- 		<script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.js"></script>
-		
-		<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-		<link href="/css/estilo_gral.css?version=1.01" rel="stylesheet" />
- 		
-		<title>ServiTec</title>
-	</head>
-	
-	<body>
-		<div class="container-fluid ml-1">
-			<div class="jumbotron mt-2">
-				<h2>Servicio T&eacute;cnico</h2>
-			</div>
-		
-			<div class="container-fluid my-2 p-1" 
-					style="height:100%;border: 2px solid Teal; border-radius: 0.5rem">
-	
-				<a href="/clientes">Ir a clientes</a>
-				<br>
-				
-			</div>  <!-- menú ppal, zona de edición y tabla -->
-			<div class="container-fluid my-2 p-1" 
-					style="height:100%;border: 2px solid Teal; border-radius: 0.5rem">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SERVITEC</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/clientes">Clientes </a></li>
+      <li><a href="/contrato">Contratos</a></li>
+      <li><a href="#">Equipos </a></li>
+      <li><a href="#">Orden de trabajo</a></li>
+     <li><a href="#">Personal</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right"> 
+	    <form th:action="@{/logout}"method="POST">
+				<button type="submit" class="btn btn-warning">Login</button>
+		</form>
+    </ul>
+  </div>
+</nav>
+  
+<script type="text/javascript">
+		toastr.options = {
+				  "closeButton": true,
+				  "debug": false,
+				  "newestOnTop": true,
+				  "progressBar": true,
+				  "positionClass": "toast-top-right",
+				  "preventDuplicates": false,
+				  "onclick": null,
+				  "showDuration": "3000",
+				  "hideDuration": "1000",
+				  "timeOut": "5000",
+				  "extendedTimeOut": "1000",
+				  "showEasing": "swing",
+				  "hideEasing": "linear",
+				  "showMethod": "fadeIn",
+				  "hideMethod": "fadeOut"
+				}
+		$(document).ready(function() {
+			toastr.success('Bienvenido a la página de inicio');
+			
+		});
+		</script>
 
-				<a href="/contrato">Ir a Contratos</a>
-			</div>  <!-- menú ppal, zona de edición y tabla -->
-		</div>  <!-- container ppal -->
 
-		<footer th:replace="fragments/complementos :: pie_pagina"></footer>		
-	</body>
+</body>
 </html>

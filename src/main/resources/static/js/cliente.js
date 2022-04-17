@@ -1,6 +1,8 @@
 function ajax_listar(){
+	var token = $("meta[name='_csrf']").attr("content");
    $.ajax({
       type : 'POST',
+      headers : {"X-CSRF-TOKEN" : token},
       url  : '/clientes/listar'
    })
    .done( function(resp) {

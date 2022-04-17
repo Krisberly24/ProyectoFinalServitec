@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeLeaf.org">
 	<head>
+		
 		<meta charset="UTF-8">
 
  		<script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/toastr.min.js"></script>
 		
 		<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-		
 		<link href="/css/estilo_gral.css?version=1.01" rel="stylesheet" />
+		<link href="/css/toastr.min.css" rel="stylesheet" th:href="@{/css/toastr.min.css}" />
 		<link rel="shortcut icon" href="/images/favicon.png" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ 		<meta name="_csrf" th:content="${_csrf.token}"/>
  		
-		<title>Clientes</title>
+		<title>Contratos</title>
 	</head>
 	
 	<body>
@@ -127,7 +129,6 @@
 								<div id="selectName" class="form-group">
 								      <label for="sel1">Seleccione el cliente:</label>
 								      <select class="form-control" id="sel1">
-								        <option>seleccione</option>
 								      </select>
 							      </div>
 							    <div id="cliente">

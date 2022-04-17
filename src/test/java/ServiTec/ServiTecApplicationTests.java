@@ -1,13 +1,6 @@
 package ServiTec;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+public class ServiTecApplicationTests {
 
-@SpringBootTest
-class ServiTecApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
 
 }
